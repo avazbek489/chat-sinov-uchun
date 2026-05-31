@@ -1764,8 +1764,10 @@
           showErr(err, error.message);
           return;
         }
-        showToast("Tasdiqlash emaili yuborildi!");
-        switchTab("login");
+        if (data?.user) {
+          showToast("Muvaffaqiyatli ro'yxatdan o'tdingiz!");
+          await initApp(data.user);
+        }
       }
 
       async function doLogout() {
